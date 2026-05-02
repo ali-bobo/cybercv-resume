@@ -85,7 +85,11 @@ npx serve .
 git add . && git commit -m "update: 更新履歷內容"
 git push origin main
 # Repo Settings → Pages → Branch: main / (root) → Save
-# 幾分鐘後上線：https://ali-bobo.github.io/cybercv-resume
+# 幾分鐘後上線：https://ali-bobo.github.io/cybercv-resume/
+
+## 線上預覽
+
+https://ali-bobo.github.io/cybercv-resume/
 ```
 
 也可直接拖到 **[Netlify Drop](https://app.netlify.com/drop)** 或 **Cloudflare Pages**，30 秒取得網址。
