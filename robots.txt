@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin.html
+
+Sitemap: https://YOUR-USERNAME.github.io/cybercv-resume/sitemap.xml

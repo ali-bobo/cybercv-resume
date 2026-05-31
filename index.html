@@ -29,6 +29,17 @@
   <!-- 內容設定檔 — 修改這個檔案就能更新整個網站 -->
   <script src="content.js"></script>
 
+  <!-- Admin preview mode: if ?preview=1, override CONTENT from admin draft -->
+  <script>
+    (function () {
+      if (!new URLSearchParams(location.search).has('preview')) return;
+      try {
+        var d = localStorage.getItem('cybercv_preview');
+        if (d) window.CONTENT = JSON.parse(d);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- React 18 production builds — SRI hash 已驗證 -->
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
           integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z"
