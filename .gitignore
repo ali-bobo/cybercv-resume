@@ -22,3 +22,7 @@ secrets.*
 # Admin panel — local-only editing tool, never push to public repo
 # Contains password hash. Run locally: python3 -m http.server 8080
 admin.html
+
+# Internal docs — not for public repo
+SETUP.md
+SKILL.md
