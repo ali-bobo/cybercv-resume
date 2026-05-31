@@ -1,6 +1,24 @@
 /* global React, SectionHead */
 const { useState: useStateP } = React;
 
+/* 只允許已知程式碼托管平台，防止 javascript: href 注入 */
+const PROJECT_HREF_ALLOWED = [
+  "https://github.com",
+  "https://gitlab.com",
+  "https://codeberg.org",
+];
+function isSafeProjectHref(href) {
+  if (!href || typeof href !== "string") return false;
+  try {
+    const u = new URL(href);
+    if (u.protocol !== "https:") return false;
+    return PROJECT_HREF_ALLOWED.some(o => {
+      try { return u.origin === o || u.origin.endsWith("." + new URL(o).hostname); }
+      catch { return false; }
+    });
+  } catch { return false; }
+}
+
 function Projects() {
   const C = window.CONTENT;
   const [filter, setFilter] = useStateP("all");
@@ -23,12 +41,12 @@ function Projects() {
           <article key={p.name} className={"cv-project" + (p.featured ? " is-featured" : "")}>
             <header>
               <h3>{p.name}</h3>
-              <span className="cv-project-star">★ {p.stars}</span>
+              {p.stars != null && <span className="cv-project-star">★ {p.stars}</span>}
             </header>
             <p>{p.blurb}</p>
             <footer>
               <span className="cv-project-lang">● {p.lang}</span>
-              {p.href
+              {isSafeProjectHref(p.href)
                 ? <a className="cv-project-link"
                      href={p.href}
                      target="_blank"

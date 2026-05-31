@@ -29,6 +29,7 @@ window.CONTENT = {
     { id: "about",    label: "關於" },
     { id: "skills",   label: "技能" },
     { id: "exp",      label: "經歷" },
+    { id: "edu",      label: "學歷" },
     { id: "certs",    label: "證照" },
     { id: "projects", label: "專案" },
     { id: "contact",  label: "聯絡" },

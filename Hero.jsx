@@ -1,4 +1,17 @@
 /* global React */
+/* 只允許外部社群連結，防止 javascript: scheme 注入 */
+const HERO_HREF_ALLOWED = ["https://github.com", "https://linkedin.com", "https://twitter.com", "https://x.com"];
+function isSafeExternalHref(href) {
+  if (!href || typeof href !== "string") return false;
+  try {
+    const u = new URL(href);
+    if (u.protocol !== "https:") return false;
+    return HERO_HREF_ALLOWED.some(o => {
+      try { return u.origin === o || u.origin.endsWith("." + new URL(o).hostname); }
+      catch { return false; }
+    });
+  } catch { return false; }
+}
 const { useState: useStateH, useEffect: useEffectH } = React;
 
 function TypingTerminal() {
@@ -46,7 +59,9 @@ function Hero() {
           <p className="cv-hero-sub">{C.hero.sub}</p>
           <div className="cv-hero-cta">
             <a className="cv-btn cv-btn-primary" href={C.hero.ctaPrimary.href}>{C.hero.ctaPrimary.label}</a>
-            <a className="cv-btn cv-btn-link" href={C.hero.ctaLink.href} target="_blank" rel="noreferrer">{C.hero.ctaLink.label}</a>
+            {isSafeExternalHref(C.hero.ctaLink.href) && (
+              <a className="cv-btn cv-btn-link" href={C.hero.ctaLink.href} target="_blank" rel="noreferrer">{C.hero.ctaLink.label}</a>
+            )}
             <button className="cv-btn cv-btn-link" onClick={() => window.print()}>↓ PDF</button>
           </div>
           <div className="cv-stats">

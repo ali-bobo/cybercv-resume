@@ -35,7 +35,12 @@
       if (!new URLSearchParams(location.search).has('preview')) return;
       try {
         var d = localStorage.getItem('cybercv_preview');
-        if (d) window.CONTENT = JSON.parse(d);
+        if (d) {
+          var parsed = JSON.parse(d);
+          if (parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            window.CONTENT = parsed;
+          }
+        }
       } catch (e) {}
     })();
   </script>
