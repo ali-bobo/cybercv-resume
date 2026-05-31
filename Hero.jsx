@@ -47,6 +47,7 @@ function Hero() {
           <div className="cv-hero-cta">
             <a className="cv-btn cv-btn-primary" href={C.hero.ctaPrimary.href}>{C.hero.ctaPrimary.label}</a>
             <a className="cv-btn cv-btn-link" href={C.hero.ctaLink.href} target="_blank" rel="noreferrer">{C.hero.ctaLink.label}</a>
+            <button className="cv-btn cv-btn-link" onClick={() => window.print()}>↓ PDF</button>
           </div>
           <div className="cv-stats">
             {C.hero.stats.map((s, i) => (

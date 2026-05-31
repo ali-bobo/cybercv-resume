@@ -20,8 +20,8 @@ window.CONTENT = {
     tagline:  "擅長資安技術 · 系統架構 · 系統維運",
     location: "台灣 · Taiwan",
     email:    "goblin@cybercv.dev",
-    github:   "https://github.com/goblin",
-    linkedin: "https://linkedin.com/in/goblin",
+    github:   "https://github.com/ali-bobo",
+    linkedin: "",
   },
 
   /* ── 導覽列 ───────────────────────────────────────────── */
@@ -41,9 +41,9 @@ window.CONTENT = {
     h1b:    "與系統架構",
     sub:    "資安技術 · 系統架構 · 系統維運 · 滲透測試",
     ctaPrimary: { label: "查看專案", href: "#projects" },
-    ctaLink:    { label: "GITHUB",   href: "https://github.com/goblin" },
+    ctaLink:    { label: "GITHUB",   href: "https://github.com/ali-bobo" },
     stats: [
-      { num: "08+",  label: "年資" },
+      { num: "8+",   label: "年資" },
       { num: "120+", label: "事件處理" },
       { num: "42",   label: "CVE 發現" },
       { num: "15",   label: "證照" },
@@ -162,6 +162,16 @@ window.CONTENT = {
     },
   ],
 
+  /* ── 學歷 ─────────────────────────────────────────────── */
+  education: [
+    {
+      range: "20XX — 20XX",
+      degree: "學士",
+      field:  "資訊工程學系",
+      school: "請填寫學校名稱",
+    },
+  ],
+
   /* ── 證照 ─────────────────────────────────────────────── */
   /*
     count: 可選，不填則自動以 items.length 計算
@@ -176,10 +186,10 @@ window.CONTENT = {
 
   /* ── 專案篩選器 ────────────────────────────────────────── */
   projectFilters: [
-    { id: "all", label: "全部" },
-    { id: "SEC", label: "資安工具" },
-    { id: "ARC", label: "架構平台" },
-    { id: "OPS", label: "維運自動化" },
+    { id: "all",  label: "全部" },
+    { id: "SEC",  label: "資安工具" },
+    { id: "OPS",  label: "維運自動化" },
+    { id: "SIDE", label: "側邊專案" },
   ],
 
   /* ── 專案 ─────────────────────────────────────────────── */
@@ -188,63 +198,45 @@ window.CONTENT = {
     featured: true → 卡片加綠色內發光
     cat:      對應 projectFilters 的 id
     lang:     顯示用，不做功能判斷
-    stars:    純顯示數字
   */
   projects: [
     {
-      name: "honeyport-mesh", lang: "Go",         stars: 248, cat: "SEC", featured: true,
-      href: "https://github.com/goblin/honeyport-mesh",
-      blurb: "分散式蜂蜜端口蜂巢：多節點協同誘捕、行為指紋識別、自動威脅情報訂閱輸出。",
+      name: "mdr-practice-report",
+      lang: "Markdown / MkDocs", cat: "SEC", featured: true,
+      href: "https://github.com/ali-bobo/mdr_practice_report",
+      blurb: "SOC / MDR 事件分析報告作品集；以 MkDocs 發布至 GitHub Pages，記錄真實操作情境中的威脅調查流程。",
     },
     {
-      name: "zerotrust-stack", lang: "Rust",       stars: 186, cat: "ARC", featured: true,
-      href: "https://github.com/goblin/zerotrust-stack",
-      blurb: "開箱即用的零信任閘道：SPIFFE 身份、OPA 授權、mTLS 全程加密、服務目錄。",
+      name: "basic-check-tookit",
+      lang: "Shell / Python / PowerShell", cat: "OPS", featured: true,
+      href: "https://github.com/ali-bobo/basic_check_tookit",
+      blurb: "SysKit Scanner — 跨平台系統健檢工具（Windows / Rocky / Ubuntu）；非 root 唯讀執行、CIS-like 10 項安全基準、TXT + JSON 雙格式報告。",
     },
     {
-      name: "fleet-ops",       lang: "Python",     stars: 92,  cat: "OPS",
-      href: "https://github.com/goblin/fleet-ops",
-      blurb: "K8s 多叢集統一維運平台：漂移偵測、自動修復、合規掃描儀表板。",
+      name: "vuln-lab",
+      lang: "JavaScript / Docker", cat: "SEC",
+      href: "https://github.com/ali-bobo/vuln-lab",
+      blurb: "Web 安全漏洞練習環境：SQLi、XSS、Command Injection、IDOR、File Upload；Docker Compose 一鍵啟動，含詳細 Walkthrough。",
     },
     {
-      name: "log-detective",   lang: "Python",     stars: 76,  cat: "SEC",
-      href: "https://github.com/goblin/log-detective",
-      blurb: "本地 LLM 輔助的事件響應助手：把 SIEM 告警轉為調查時間軸與處置建議。",
+      name: "linux-learning-tool",
+      lang: "HTML", cat: "OPS",
+      href: "https://github.com/ali-bobo/linux-learning-tool",
+      blurb: "互動式 Linux 檔案系統學習工具；純前端實作，瀏覽器直接開啟，無需後端服務。",
     },
     {
-      name: "cve-radar",       lang: "TypeScript", stars: 64,  cat: "SEC",
-      href: "https://github.com/goblin/cve-radar",
-      blurb: "資產對照式 CVE 雷達：掃描你的依賴 → 推送相關漏洞 → 自動產生修補 PR。",
-    },
-    {
-      name: "iac-guard",       lang: "Go",         stars: 58,  cat: "ARC",
-      href: "https://github.com/goblin/iac-guard",
-      blurb: "Terraform / Pulumi 安全靜態分析：CIS 基準檢查、最小權限稽核、PR 內聯註解。",
-    },
-    {
-      name: "runbook-engine",  lang: "Python",     stars: 41,  cat: "OPS",
-      href: "https://github.com/goblin/runbook-engine",
-      blurb: "事件處理 Runbook 自動化引擎：把 SOP 變成可審計、可回放的執行軌跡。",
-    },
-    {
-      name: "ssh-canary",      lang: "Go",         stars: 33,  cat: "SEC",
-      href: "https://github.com/goblin/ssh-canary",
-      blurb: "輕量級 SSH 蜜罐探針：零依賴 binary、單檔部署、Slack/Webhook 即時告警。",
-    },
-    {
-      name: "infra-graph",     lang: "TypeScript", stars: 29,  cat: "ARC",
-      href: "https://github.com/goblin/infra-graph",
-      blurb: "把雲端拓撲畫成互動圖譜，從「誰能存取什麼」逆推爆炸半徑與最小化建議。",
+      name: "maplestory-platformer",
+      lang: "JavaScript / Phaser 3", cat: "SIDE",
+      href: "https://github.com/ali-bobo/maplestory-platformer",
+      blurb: "楓之谷風格 2D 平台動作遊戲；esbuild 打包、6 張地圖 + Boss + 副本系統、CSP 安全強化與 Dependabot 依賴掃描。",
     },
   ],
 
   /* ── 聯絡 ─────────────────────────────────────────────── */
   contact: {
     items: [
-      { k: "EMAIL",    v: "goblin@cybercv.dev",       meta: "點擊複製",    action: "copy" },
-      { k: "GITHUB",   v: "github.com/goblin",        meta: "前往",        href: "https://github.com/goblin" },
-      { k: "LINKEDIN", v: "linkedin.com/in/goblin",   meta: "前往",        href: "https://linkedin.com/in/goblin" },
-      { k: "PGP",      v: "0xDEAD BEEF · 4096R",      meta: "下載公鑰",    href: "#pgp" },
+      { k: "EMAIL",    v: "goblin@cybercv.dev",      meta: "點擊複製",    action: "copy" },
+      { k: "GITHUB",   v: "github.com/ali-bobo",       meta: "前往",        href: "https://github.com/ali-bobo" },
       { k: "位置",     v: "台灣 · 25.0°N 121.5°E",    meta: "遠端 / 全球" },
       { k: "時區",     v: "UTC+8 · GMT+0800",         meta: "通常 09–18 在線" },
     ],
